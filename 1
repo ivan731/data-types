@@ -1,0 +1,73 @@
+void main()
+{
+	setlocale(LC_ALL, "ru");
+
+	cout << "Типы данных: " << endl;
+	int t1 = 5;
+	int f1 = 5;
+	char t2 = 'f';
+	float t3 = 1.24;
+	double t4 = 23.754;
+	bool t5 = true;
+
+	if (t5)
+		cout << "Это правда!" << endl;
+
+	t1 == t3 ? cout << "да" : cout << "нет" << endl;
+
+	t1 == f1 ? cout << "да" : cout << "нет" << endl;
+
+
+
+
+	cout << endl << "      Побитовое разложение" << endl;
+	cout << "Логическое НЕ " << endl;
+	unsigned char a = 10; // 00001010;
+	unsigned char b = ~a; // 11110101 128+64+32+16+4+1 = 245
+
+	cout <<(int)a<< "->"<< int(b) << endl << endl;
+
+	
+	cout << "Логическое И" << endl;
+	unsigned char var = 5;  //00000101
+	unsigned char mask = 4; //00000100
+
+	unsigned char res = var & mask;
+	cout << int(var)<<"->"<<int(res) << endl << endl;
+
+	
+	cout << "Логическое ИЛИ" << endl;
+	unsigned char var2 = 8;  //00001000
+	unsigned char mask2 = 4; //00000100
+
+	var2 |= mask2;
+	cout << int(var2) << endl << endl;
+
+
+	cout << "Логическое XOR (ИЛИ НЕ)" << endl;
+	unsigned char var3 = 11;  //00001011
+	unsigned char mask3 = 1;  //00000001
+
+	var3 ^= mask3;
+	cout << int(var3) << endl << endl;
+
+
+
+
+	cout << "Сдивг по однрому биту: " << endl;
+
+	unsigned char top = 10; //        00001010
+	
+	top <<= 1;
+	cout << int(top) << endl; //      00010100
+
+	top >>= 1;
+	cout << int(top) << endl; //      00001010
+
+	top >>= 3;
+	cout << int(top) << endl; //      00000001
+
+	top <<= 2;
+	cout << int(top) << endl; //      00000100
+
+}
