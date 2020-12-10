@@ -69,5 +69,48 @@ void main()
 
 	top <<= 2;
 	cout << int(top) << endl; //      00000100
+	
+	
+	
+	cout << "Шифрование с помощью XOR: " << endl;
+	
+	cout << "Введите пароль: ";
+	char password[30] = "";
+	cin >> password;
+	
+	unsigned char mask55 = 11;
+
+	cout << "Шифрую..." << endl;
+	Sleep(1000);
+	for (int i = 0; i < strlen(password); i++)
+		password[i] ^= mask55;
+
+	cout << "Зашифрованый пароль: ";
+	for (int i = 0; i < strlen(password); i++)
+		cout << password[i];
+	cout << endl;
+
+	cout << "Хотите расшифровать?(yes/no) ";
+	string count;
+	cin >> count;
+
+	if (count == "yes")
+	{
+		cout << "Расшифровываю..." << endl;
+		Sleep(1000);
+		for (int i = 0; i < strlen(password); i++)
+			password[i] ^= mask55;
+
+		cout << "Ваш пароль: ";
+		for (int i = 0; i < strlen(password); i++)
+			cout << password[i];
+		cout << endl;
+	}
+	else
+	{
+		cout << "Спасибо за использование нашей программы :)" << endl;
+	}
+
+	cout << endl;
 
 }
