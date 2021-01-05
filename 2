@@ -1,0 +1,115 @@
+#include <iostream>
+using namespace std;
+
+int** CreateArray(int size1, int size2)
+{
+    int** arr = new int* [size1];
+
+    for (int i = 0; i < size1; i++)
+    {
+        arr[i] = new int[size2];
+    }
+
+    for (int i = 0; i < size1; i++)
+    {
+        for (int j = 0; j < size2; j++)
+        {
+            arr[i][j] = rand() % 10;
+        }
+    }
+
+    return arr;
+}
+
+//умный указатель
+template<typename T> 
+class SmartPointer
+{   
+public: 
+    SmartPointer(T* ptr)
+    {
+        this->ptr = ptr;
+    }
+
+    ~SmartPointer()
+    {
+        delete ptr;
+    }
+
+    T& operator* ()
+    {
+        return *ptr;
+    }
+private:
+    T *ptr;
+};
+
+
+//зеркалит массив 
+template<typename T>
+void mirror(T *arr, int size)
+{
+    int j = size - 1;
+    for (int i = 0; i < size/2; i++)
+    {
+        for (j; j >= 0;)
+        {
+            int temp = arr[i];
+            arr[i] = *(arr + j);
+            *(arr + j) = temp;
+            j--;
+            break;
+        }
+    }
+}
+
+int main()
+{
+    int size1 = 10, size2 = 10;
+    int** arr = CreateArray(size1, size2);
+
+
+    for (int i = 0; i < size1; i++)
+    {
+        for (int j = 0; j < size2; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+        delete[] arr[i];
+    }
+    delete[] arr;
+    cout << endl;
+
+
+    int size = 10;
+    int* arr2 = new int[size];
+    for (int i = 0; i < size; i++)
+        arr2[i] = i;
+
+    for (int i = 0; i < size; i++)
+        cout << arr2[i] << " ";
+
+    cout << endl;
+    mirror<int>(arr2, size);
+
+    for (int i = 0; i < size; i++)
+        cout << arr2[i] << " ";
+
+    cout << endl;
+    delete[] arr2;
+
+
+
+    char str[] = "Hello";
+    mirror<char>(str, strlen(str));
+    
+    for (int i = 0; i < strlen(str); i++)
+        cout << str[i];
+        
+        
+       
+    SmartPointer<int> a = new int(10);
+    cout << *a << endl;
+
+}
